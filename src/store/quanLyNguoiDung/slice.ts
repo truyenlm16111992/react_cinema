@@ -1,24 +1,26 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { UserByAccessToken, UserLogin } from 'types'
-import { getUserByAccessTokenThunk, loginThunk } from '.'
+import { UserByAccessToken, UserLogin, UserType } from 'types'
+import { getUserByAccessTokenThunk, getUserTypeListThunk, loginThunk } from '.'
 import { getAccessToken } from 'utils'
 
 type QuanLyNguoiDungInitialState = {
     accessToken?: string
     userLogin?: UserLogin | UserByAccessToken
-    isFetchingLogin?: boolean
+    isFetchingLogin?: boolean,
+    userTypeList?: UserType[]
 
 }
 const initialState: QuanLyNguoiDungInitialState = {
     accessToken: getAccessToken(),
-    isFetchingLogin: false
+    isFetchingLogin: false,
+    userTypeList: []
 }
 
 const quanLyNguoiDungSlice = createSlice({
     name: 'quanLyNguoiDung',
     initialState,
     reducers: {
-        logOut: (state, {payload}: PayloadAction<string>) => {
+        logOut: (state, { payload }: PayloadAction<string>) => {
             console.log(payload);
             state.accessToken = undefined;
             state.userLogin = undefined;
@@ -46,6 +48,9 @@ const quanLyNguoiDungSlice = createSlice({
             })
             .addCase(getUserByAccessTokenThunk.fulfilled, (state, { payload }) => {
                 state.userLogin = payload;
+            })
+            .addCase(getUserTypeListThunk.fulfilled, (state, { payload }) => {
+                state.userTypeList=[...payload];
             })
     },
 })

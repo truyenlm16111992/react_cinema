@@ -15,7 +15,6 @@ export const Header = () => {
     const { accessToken, user } = useAuth();
     const [scroll, setSecroll] = useState<boolean>(false);
     const handleScroll = () => {
-        console.log(window.pageYOffset);
         if (window.pageYOffset > 20) {
             setSecroll(true)
             return;

@@ -7,6 +7,7 @@ export const loginThunk = createAsyncThunk(
     // THam số đầu là Name
     'quanLyNguoiDung/login',
     // Tham số đầu tiên của hàm luôn là payload, nếu k dùng thì dùng _ thay thế để k cần khai bao dữ kiễu liệu
+    // Tham số thứ 2 là Thunk API
     async (payload: LoginSchemaType, { rejectWithValue }) => {
         try {
             const data = await quanLyNguoiDungServices.login(payload);
@@ -36,5 +37,16 @@ export const getUserByAccessTokenThunk = createAsyncThunk(
         }
     }
 )
+export const getUserTypeListThunk = createAsyncThunk(
+    "quanLyNguoiDung/getUserTypeList",
+    async (_, {rejectWithValue}) =>{
+        try{
+            const data = await quanLyNguoiDungServices.getUserTypeList();
+            return data.data.content;
+        }catch(error){
+            return rejectWithValue(error);
+        }
+    }
+);
 // Các action Thunk tự tạo ra dựa theo Name được đặt ở trên
 // Có các action isPending (Bắt đầu call), fulfilled (Thành công), rejected (Thất bại)
