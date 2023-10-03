@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UseFormRegister, Controller, Control } from "react-hook-form"
+import { Controller, Control } from "react-hook-form"
 import { Select as SelectA, SelectProps as SelectPropsA } from "antd"
-import styled, { createGlobalStyle } from "styled-components"
+import styled from "styled-components"
 
 type SelectProps = SelectPropsA & {
     id?: string,
@@ -13,7 +13,7 @@ type SelectProps = SelectPropsA & {
 }
 
 export const Select = (props: SelectProps) => {
-    const { id, name, classNameContainer, label, error, control } = props;
+    const { id, name, classNameContainer, label, error, control, ...selectProps } = props;
     return (
         <div className={classNameContainer}>
             {/* <GlobalStyle /> */}
@@ -25,11 +25,9 @@ export const Select = (props: SelectProps) => {
                     <SelectS
                         {...field}
                         defaultValue={field.value}
-                        {...props}
+                        {...selectProps}
                     >
                     </SelectS>
-
-
                 )}
             />
             {!!error && <p className="text-red-500 text-14">{error}</p>}
@@ -39,16 +37,6 @@ export const Select = (props: SelectProps) => {
 
 const SelectS = styled(SelectA)`
     border: 1px solid black;
-    &:hover{
-        .ant-select-selector{
-            border: none !important;
-        }
-    }
-    &:focus{
-        .ant-select-selector{
-            border: none !important;
-        }
-    }
     .ant-select-selector{
         height: fit-content !important;
         padding: 10px !important;

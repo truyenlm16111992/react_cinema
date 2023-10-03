@@ -39,11 +39,11 @@ export const getUserByAccessTokenThunk = createAsyncThunk(
 )
 export const getUserTypeListThunk = createAsyncThunk(
     "quanLyNguoiDung/getUserTypeList",
-    async (_, {rejectWithValue}) =>{
-        try{
+    async (_, { rejectWithValue }) => {
+        try {
             const data = await quanLyNguoiDungServices.getUserTypeList();
             return data.data.content;
-        }catch(error){
+        } catch (error) {
             return rejectWithValue(error);
         }
     }

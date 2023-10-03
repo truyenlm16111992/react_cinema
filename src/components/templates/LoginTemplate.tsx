@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { LoginSchema, LoginSchemaType } from 'schema'
 import { RootState, useAppDispatch } from 'store'
-import { loginThunk } from 'store/quanLyNguoiDung'
+import { getUserByAccessTokenThunk, loginThunk } from 'store/quanLyNguoiDung'
 import { handleError } from 'utils'
 
 export const LoginTemplate = () => {
@@ -29,6 +29,7 @@ export const LoginTemplate = () => {
             //Xử lý action thành công
             navigate('/');
             toast.success('Đăng nhập thành công!');
+            dispatch(getUserByAccessTokenThunk());
         })
         .catch((error)=>{
             //Xử lý action thất bại

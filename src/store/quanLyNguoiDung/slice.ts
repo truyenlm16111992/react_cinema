@@ -43,14 +43,13 @@ const quanLyNguoiDungSlice = createSlice({
 
                 state.accessToken = payload.accessToken;
                 //set lại user
-                state.userLogin = payload;
                 state.isFetchingLogin = false;
             })
             .addCase(getUserByAccessTokenThunk.fulfilled, (state, { payload }) => {
                 state.userLogin = payload;
             })
             .addCase(getUserTypeListThunk.fulfilled, (state, { payload }) => {
-                state.userTypeList=[...payload];
+                state.userTypeList = [...payload];
             })
     },
 })
