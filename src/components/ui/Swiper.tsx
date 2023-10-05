@@ -18,7 +18,7 @@ const SwiperS = styled(SwiperSW)`
             object-fit: cover;
             object-position: center;
             width: 100%;
-            height: 600px;
+            height: 500px;
         }
     }
     .swiper-button-prev, 

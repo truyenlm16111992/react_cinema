@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { useRef } from 'react';
 
-export const Banner = () => {
+export const BannerTemplate = () => {
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (_, time:number, progress:number) => {
