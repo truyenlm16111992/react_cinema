@@ -12,7 +12,8 @@ export const MovieDistributorTemplate = () => {
         <CardS
           className='flex items-center'
           bordered={false}
-          hoverable={true}>
+          hoverable={true}
+          key={e.maHeThongRap}>
           <img src={e.logo} alt="" className='h-[50px] w-[50px]' />
           <h6 className='ml-10 font-500 uppercase'>{e.tenHeThongRap}</h6>
         </CardS>

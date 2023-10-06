@@ -6,4 +6,5 @@ const api = apiInstance({
 });
 export const quanLyPhimServices = {
     getMovieList: (query = '') => api.get<ApiResponse<Movie[]>>(`/LayDanhSachPhim${query}`),
+    
 }

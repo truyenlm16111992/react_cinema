@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { MovieDistributor } from "types/QuanLyRap"
-import { getMovieDistributorThunk } from "."
+import { getMovieCinemaThunk, getMovieDistributorThunk } from "."
 
 type quanLyRapInitialState = {
-    movieDistributorList: MovieDistributor[]
+    movieDistributorList: MovieDistributor[],
+    
 }
 const initialState: quanLyRapInitialState = {
     movieDistributorList: []
@@ -17,7 +18,10 @@ const quanLyRapSlice = createSlice({
     extraReducers(builder) {
         builder.addCase(getMovieDistributorThunk.fulfilled, (state, { payload }) => {
             state.movieDistributorList=payload;
-        });
+        })
+        .addCase(getMovieCinemaThunk.fulfilled, (state, {payload})=>{
+            state.
+        })
     },
 });
 
